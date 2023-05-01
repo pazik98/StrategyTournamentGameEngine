@@ -1,5 +1,7 @@
 import engine.core.ComponentHeriter;
+import engine.core.GameObject;
 import engine.core.GameObjectHerited;
+import engine.core.Scene;
 import engine.core.component.ComponentManager;
 import engine.core.component.Transform;
 import engine.core.entity.EntityManager;
@@ -11,16 +13,8 @@ public class Main {
     private static final Logger rootLogger = LogManager.getRootLogger();
 
     public static void main(String[] args) {
-        EntityManager entityManager = new EntityManager();
-        ComponentManager componentManager = new ComponentManager();
-
-        GameObjectHerited gameObjectHerited = entityManager.createEntity(GameObjectHerited.class);
-        componentManager.createComponent(ComponentHeriter.class, gameObjectHerited);
-        componentManager.createComponent(Transform.class, gameObjectHerited);
-
-        componentManager.destroyComponent(gameObjectHerited.getComponent(ComponentHeriter.class));
-
-        System.out.println(componentManager);
-
+        Scene scene = new Scene();
+        GameObject gameObject = scene.spawn(GameObjectHerited.class);
+        scene.despawn(gameObject);
     }
 }

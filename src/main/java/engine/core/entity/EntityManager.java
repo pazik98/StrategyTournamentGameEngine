@@ -33,7 +33,7 @@ public class EntityManager implements IEntityManager {
             return null;
         }
         entities.add(entity);
-        rootLogger.debug("Created entity " + entity);
+        rootLogger.debug("created entity " + entity);
         return entity;
     }
 
