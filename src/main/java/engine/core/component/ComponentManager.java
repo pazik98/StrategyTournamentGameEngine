@@ -1,15 +1,17 @@
-package core.component;
+package engine.core.component;
 
-import core.GameObject;
-import core.entity.Entity;
+import engine.core.GameObject;
+import engine.core.entity.Entity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ComponentManager {
+
+    private static final Logger rootLogger = LogManager.getRootLogger();
 
     private final List<Component> components;
     private int componentIdCounter = 0;
@@ -22,7 +24,7 @@ public class ComponentManager {
         return componentIdCounter++;
     }
 
-    public <T extends Component> T createComponent(Class<T> componentClass, GameObject gameObject) {
+    public <T extends Component> T createComponent(Class<T> componentClass, Entity entity) {
         int id = generateComponentId();
         T component;
         try {
@@ -32,8 +34,9 @@ public class ComponentManager {
             return null;
         }
         components.add(component);
-        gameObject.addComponent(component);
-        component.setGameObject(gameObject);
+        entity.addComponent(component);
+        component.setEntity(entity);
+        rootLogger.debug("created " + component + " on " + entity);
         return component;
     }
 
@@ -52,15 +55,17 @@ public class ComponentManager {
 
     public void destroyComponent(int id) {
         Component component = getComponent(id);
-        component.getGameObject().removeComponent(component.getClass());
-        component.setGameObject(null);
+        component.getEntity().removeComponent(component.getClass());
+        component.setEntity(null);
         components.remove(component);
+        rootLogger.debug("destroyed " + component);
     }
 
     public void destroyComponent(Component component) {
-        component.getGameObject().removeComponent(component.getClass());
-        component.setGameObject(null);
+        component.getEntity().removeComponent(component.getClass());
+        component.setEntity(null);
         components.remove(component);
+        rootLogger.debug("destroyed " + component);
     }
 
     @Override

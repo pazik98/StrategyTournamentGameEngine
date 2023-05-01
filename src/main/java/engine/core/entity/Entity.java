@@ -1,6 +1,6 @@
-package core.entity;
+package engine.core.entity;
 
-import core.component.Component;
+import engine.core.component.Component;
 
 import java.util.ArrayList;
 import java.util.List;

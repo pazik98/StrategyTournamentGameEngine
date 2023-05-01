@@ -1,11 +1,14 @@
-import core.ComponentHeriter;
-import core.GameObject;
-import core.GameObjectHerited;
-import core.component.Component;
-import core.component.ComponentManager;
-import core.entity.EntityManager;
+import engine.core.ComponentHeriter;
+import engine.core.GameObjectHerited;
+import engine.core.component.ComponentManager;
+import engine.core.entity.EntityManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
+
+    private static final Logger rootLogger = LogManager.getRootLogger();
+
     public static void main(String[] args) {
         EntityManager entityManager = new EntityManager();
         ComponentManager componentManager = new ComponentManager();
@@ -16,10 +19,6 @@ public class Main {
         componentManager.createComponent(ComponentHeriter.class, gameObjectHerited);
 
         componentManager.destroyComponent(gameObjectHerited.getComponent(ComponentHeriter.class));
-
-        System.out.println(componentManager);
-        System.out.println(gameObjectHerited);
-
 
     }
 }

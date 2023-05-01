@@ -1,4 +1,4 @@
-package core;
+package engine.core;
 
 public class GameObjectHerited extends GameObject {
     public GameObjectHerited(int id) {

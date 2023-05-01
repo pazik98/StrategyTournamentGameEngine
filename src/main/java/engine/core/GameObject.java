@@ -1,10 +1,6 @@
-package core;
+package engine.core;
 
-import core.component.Component;
-import core.entity.Entity;
-
-import java.util.ArrayList;
-import java.util.List;
+import engine.core.entity.Entity;
 
 public abstract class GameObject extends Entity {
 

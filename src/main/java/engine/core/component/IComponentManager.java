@@ -1,6 +1,6 @@
-package core.component;
+package engine.core.component;
 
-import core.GameObject;
+import engine.core.GameObject;
 
 public interface IComponentManager {
 

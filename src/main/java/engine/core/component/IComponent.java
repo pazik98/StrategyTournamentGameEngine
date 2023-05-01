@@ -1,4 +1,4 @@
-package core.component;
+package engine.core.component;
 
 public interface IComponent {
 

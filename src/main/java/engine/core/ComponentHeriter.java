@@ -1,6 +1,6 @@
-package core;
+package engine.core;
 
-import core.component.Component;
+import engine.core.component.Component;
 
 public class ComponentHeriter extends Component {
     public ComponentHeriter(int id) {

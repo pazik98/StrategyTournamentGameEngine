@@ -1,4 +1,7 @@
-package core.entity;
+package engine.core.entity;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -6,8 +9,9 @@ import java.util.List;
 
 public class EntityManager implements IEntityManager {
 
-    private final List<Entity> entities;
+    private static final Logger rootLogger = LogManager.getRootLogger();
 
+    private final List<Entity> entities;
     private int entityIdCounter = 0;
 
     public EntityManager() {
@@ -29,6 +33,7 @@ public class EntityManager implements IEntityManager {
             return null;
         }
         entities.add(entity);
+        rootLogger.debug("Created entity " + entity);
         return entity;
     }
 
@@ -48,7 +53,9 @@ public class EntityManager implements IEntityManager {
 
     @Override
     public void destroyEntity(int id) {
-        entities.remove(getEntity(id));
+        Entity entity = getEntity(id);
+        entities.remove(entity);
+        rootLogger.debug("removed entity " + entity);
     }
 
     @Override

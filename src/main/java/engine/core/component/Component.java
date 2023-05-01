@@ -1,22 +1,23 @@
-package core.component;
+package engine.core.component;
 
-import core.GameObject;
+import engine.core.GameObject;
+import engine.core.entity.Entity;
 
 public abstract class Component implements IComponent {
 
     private final int id;
-    private GameObject gameObject;
+    private Entity entity;
 
     public Component(int id) {
         this.id = id;
     }
 
-    public GameObject getGameObject() {
-        return gameObject;
+    public Entity getEntity() {
+        return entity;
     }
 
-    public void setGameObject(GameObject gameObject) {
-        this.gameObject = gameObject;
+    public void setEntity(Entity entity) {
+        this.entity = entity;
     }
 
     @Override
