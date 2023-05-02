@@ -1,8 +1,10 @@
 package engine.core;
 
 import engine.core.component.ComponentManager;
+import engine.core.component.IComponentManager;
 import engine.core.component.Transform;
 import engine.core.entity.EntityManager;
+import engine.core.entity.IEntityManager;
 import engine.core.exception.UnspawnedGameObjectException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +16,8 @@ public class Scene {
 
     private static final Logger rootLogger = LogManager.getRootLogger();
 
-    EntityManager entityManager;
-    ComponentManager componentManager;
+    IEntityManager entityManager;
+    IComponentManager componentManager;
     List<GameObject> gameObjects;
 
     public Scene() {
