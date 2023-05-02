@@ -3,7 +3,7 @@ package engine.core;
 import engine.core.component.ComponentManager;
 import engine.core.component.Transform;
 import engine.core.entity.EntityManager;
-import engine.core.exception.UnspawnedGameObject;
+import engine.core.exception.UnspawnedGameObjectException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,12 +36,12 @@ public class Scene {
         try {
             destroyGameObject(gameObject);
             rootLogger.debug(gameObject + " was despawned from " + this);
-        } catch (UnspawnedGameObject e) {
+        } catch (UnspawnedGameObjectException e) {
             e.printStackTrace();
         }
     }
 
-    private void destroyGameObject(GameObject gameObject) throws UnspawnedGameObject {
+    private void destroyGameObject(GameObject gameObject) throws UnspawnedGameObjectException {
         for (GameObject gameObj : gameObjects) {
             if (gameObj.equals(gameObject)) {
                 gameObjects.remove(gameObject);
@@ -49,6 +49,6 @@ public class Scene {
                 return;
             }
         }
-        throw new UnspawnedGameObject(gameObject);
+        throw new UnspawnedGameObjectException(gameObject);
     }
 }
