@@ -1,5 +1,7 @@
 package engine;
 
+import engine.core.System.RenderSystem;
+import engine.core.System.SystemManager;
 import engine.core.component.*;
 import engine.core.entity.EntityManager;
 import engine.core.entity.IEntityManager;
@@ -18,12 +20,17 @@ public class Scene {
 
     IEntityManager entityManager;
     IComponentManager componentManager;
+    SystemManager systemManager;
     List<GameObject> gameObjects;
+    List<GameObject> renderableObjects;
 
     public Scene() {
         entityManager = new EntityManager();
         componentManager = new ComponentManager();
+        systemManager = new SystemManager();
         gameObjects = new ArrayList<>();
+        renderableObjects = new ArrayList<>();
+        systemManager.addSystem(new RenderSystem(renderableObjects));
     }
 
     public <T extends GameObject, K extends Component> T spawn(Class<T> gameObjectClass, Class<K>[] componentClasses) {
@@ -36,7 +43,9 @@ public class Scene {
     }
 
     public <T extends GameObject> T spawnObject(Class<T> objectClass) {
-        return (T) spawn(objectClass, new Class[]{Transform.class, Render.class});
+        T object = (T) spawn(objectClass, new Class[]{Transform.class, Render.class});
+        renderableObjects.add(object);
+        return object;
     }
 
     public void despawn(GameObject gameObject) {
@@ -57,5 +66,15 @@ public class Scene {
             }
         }
         throw new UnspawnedGameObjectException(gameObject);
+    }
+
+    public void start() {
+        for (int i = 0; i < 100; i++) {
+            systemManager.loop();
+        }
+    }
+
+    public void pause() {
+
     }
 }

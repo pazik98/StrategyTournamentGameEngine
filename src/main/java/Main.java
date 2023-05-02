@@ -11,5 +11,8 @@ public class Main {
     public static void main(String[] args) {
         Scene scene = new Scene();
         GameObject gameObject = scene.spawnObject(GameObjectHerited.class);
+        GameObject gameObject2 = scene.spawnObject(GameObjectHerited.class);
+        gameObject2.setName("Object2");
+        scene.start();
     }
 }

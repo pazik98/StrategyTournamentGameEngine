@@ -1,27 +1,25 @@
 package engine.core.component;
 
-import java.awt.image.BufferedImage;
-
 public class Render extends Component {
 
-    private BufferedImage texture;
+    private String texturePath;
 
     public Render(int id) {
         super(id);
     }
 
-    public BufferedImage getTexture() {
-        return texture;
+    public String getTexturePath() {
+        return texturePath;
     }
 
-    public void setTexture(BufferedImage texture) {
-        this.texture = texture;
+    public void setTexturePath(String texturePath) {
+        this.texturePath = texturePath;
     }
 
     @Override
     public String toString() {
         return "Render{" +
-                "texture=" + texture +
+                "texturePath='" + texturePath + '\'' +
                 '}';
     }
 }
