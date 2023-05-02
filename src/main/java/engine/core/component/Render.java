@@ -17,4 +17,11 @@ public class Render extends Component {
     public void setTexture(BufferedImage texture) {
         this.texture = texture;
     }
+
+    @Override
+    public String toString() {
+        return "Render{" +
+                "texture=" + texture +
+                '}';
+    }
 }

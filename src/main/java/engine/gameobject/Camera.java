@@ -6,6 +6,7 @@ public class Camera extends GameObject {
 
     public Camera(int id) {
         super(id);
+        setName("Camera");
         zoom = 1.0;
     }
 
