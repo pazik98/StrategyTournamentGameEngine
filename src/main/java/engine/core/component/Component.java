@@ -1,6 +1,5 @@
 package engine.core.component;
 
-import engine.core.GameObject;
 import engine.core.entity.Entity;
 
 public abstract class Component implements IComponent {

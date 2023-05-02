@@ -1,6 +1,5 @@
 package engine.core.component;
 
-import engine.core.GameObject;
 import engine.core.entity.Entity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

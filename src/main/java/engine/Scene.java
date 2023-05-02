@@ -1,4 +1,4 @@
-package engine.core;
+package engine;
 
 import engine.core.component.ComponentManager;
 import engine.core.component.IComponentManager;
@@ -6,6 +6,7 @@ import engine.core.component.Transform;
 import engine.core.entity.EntityManager;
 import engine.core.entity.IEntityManager;
 import engine.core.exception.UnspawnedGameObjectException;
+import engine.gameobject.GameObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,6 +1,6 @@
 package engine.core.exception;
 
-import engine.core.GameObject;
+import engine.gameobject.GameObject;
 
 public class UnspawnedGameObjectException extends Exception {
 

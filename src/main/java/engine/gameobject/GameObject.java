@@ -1,5 +1,6 @@
-package engine.core;
+package engine.gameobject;
 
+import engine.Scene;
 import engine.core.entity.Entity;
 
 import java.util.Objects;

@@ -1,4 +1,6 @@
-package engine.core;
+package engine.gameobject;
+
+import engine.gameobject.GameObject;
 
 public class GameObjectHerited extends GameObject {
     public GameObjectHerited(int id) {

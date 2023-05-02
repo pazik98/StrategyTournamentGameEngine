@@ -1,10 +1,6 @@
-import engine.core.ComponentHeriter;
-import engine.core.GameObject;
-import engine.core.GameObjectHerited;
-import engine.core.Scene;
-import engine.core.component.ComponentManager;
-import engine.core.component.Transform;
-import engine.core.entity.EntityManager;
+import engine.gameobject.GameObject;
+import engine.gameobject.GameObjectHerited;
+import engine.Scene;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
