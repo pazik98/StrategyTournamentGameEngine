@@ -1,4 +1,4 @@
-package engine.gameobject;
+package engine.core.entity.gameobject;
 
 import engine.Scene;
 import engine.core.entity.Entity;

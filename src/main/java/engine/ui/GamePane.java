@@ -2,7 +2,7 @@ package engine.ui;
 
 import engine.Scene;
 import engine.core.component.Transform;
-import engine.gameobject.GameObject;
+import engine.core.entity.gameobject.GameObject;
 
 import javax.swing.*;
 import java.awt.*;

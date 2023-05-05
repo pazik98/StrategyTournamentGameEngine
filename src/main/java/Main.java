@@ -1,13 +1,11 @@
 import engine.core.component.Transform;
-import engine.gameobject.GameObject;
-import engine.gameobject.GameObjectHerited;
+import engine.core.entity.gameobject.GameObject;
+import engine.core.entity.gameobject.GameObjectHerited;
 import engine.Scene;
 import engine.ui.RenderWindowAWT;
 import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.swing.*;
 
 public class Main {
 

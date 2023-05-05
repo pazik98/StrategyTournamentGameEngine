@@ -1,7 +1,7 @@
 package engine.core.System;
 
 import engine.core.component.Transform;
-import engine.gameobject.GameObject;
+import engine.core.entity.gameobject.GameObject;
 import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
 
 import java.util.List;

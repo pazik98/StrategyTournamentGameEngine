@@ -6,7 +6,7 @@ import engine.core.component.*;
 import engine.core.entity.EntityManager;
 import engine.core.entity.IEntityManager;
 import engine.core.exception.UnspawnedGameObjectException;
-import engine.gameobject.GameObject;
+import engine.core.entity.gameobject.GameObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
