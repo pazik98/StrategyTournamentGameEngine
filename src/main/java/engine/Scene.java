@@ -1,12 +1,11 @@
 package engine;
 
-import engine.core.System.RenderSystem;
+import engine.core.System.RandomMovingSystem;
 import engine.core.System.SystemManager;
 import engine.core.component.*;
 import engine.core.entity.EntityManager;
 import engine.core.entity.IEntityManager;
 import engine.core.exception.UnspawnedGameObjectException;
-import engine.gameobject.Camera;
 import engine.gameobject.GameObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,11 +17,14 @@ public class Scene {
 
     private static final Logger rootLogger = LogManager.getRootLogger();
 
-    IEntityManager entityManager;
-    IComponentManager componentManager;
-    SystemManager systemManager;
-    List<GameObject> gameObjects;
-    List<GameObject> renderableObjects;
+    private IEntityManager entityManager;
+    private IComponentManager componentManager;
+    private SystemManager systemManager;
+    private List<GameObject> gameObjects;
+    private List<GameObject> renderableObjects;
+
+    private int tickrate = 2;
+    private Thread thread;
 
     public Scene() {
         entityManager = new EntityManager();
@@ -30,7 +32,20 @@ public class Scene {
         systemManager = new SystemManager();
         gameObjects = new ArrayList<>();
         renderableObjects = new ArrayList<>();
-        systemManager.addSystem(new RenderSystem(renderableObjects));
+        systemManager.addSystem(new RandomMovingSystem(gameObjects));
+
+
+        Runnable doUpdate = () -> {
+            while (true) {
+                systemManager.loop();
+                try {
+                    Thread.sleep(1000/tickrate);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        };
+        thread = new Thread(doUpdate);
     }
 
     public <T extends GameObject, K extends Component> T spawn(Class<T> gameObjectClass, Class<K>[] componentClasses) {
@@ -69,12 +84,14 @@ public class Scene {
     }
 
     public void start() {
-        for (int i = 0; i < 100; i++) {
-            systemManager.loop();
-        }
+        thread.start();
     }
 
     public void pause() {
 
+    }
+
+    public List<GameObject> getRenderableObjects() {
+        return new ArrayList<>(renderableObjects);
     }
 }
