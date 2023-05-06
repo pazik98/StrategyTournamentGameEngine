@@ -6,11 +6,17 @@ import engine.core.entity.gameobject.GameObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public class GamePane extends JPanel {
 
     private Scene scene;
+    private RenderWindowAWT window;
+
+    public void setWindow(RenderWindowAWT window) {
+        this.window = window;
+    }
 
     public Scene getScene() {
         return scene;
@@ -35,8 +41,10 @@ public class GamePane extends JPanel {
     }
 
     private void drawGameObject(Graphics g, GameObject gameObject, int x, int y) {
-        g.setColor(Color.GREEN);
-        g.drawRect(x, y, 100, 100);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Courier", Font.BOLD,50));
+        BufferedImage image = window.getEngine().getResourceManager().getTexture("tank");
+        g.drawImage(image, x, y, null);
         g.drawString(gameObject.getName(), x, y);
     }
 }

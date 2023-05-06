@@ -23,7 +23,7 @@ public class Scene {
     private List<GameObject> gameObjects;
     private List<GameObject> renderableObjects;
 
-    private int tickrate = 2;
+    private int tickrate = 5;
     private Thread thread;
 
     public Scene() {

@@ -1,16 +1,24 @@
 package engine.ui;
 
+import engine.Engine;
 import engine.Scene;
+import engine.core.resource.ResourceManager;
 
 import javax.swing.*;
 
 public class RenderWindowAWT {
+
+    private Engine engine;
     private Scene scene;
     private JFrame frame;
     private GamePane gamePane;
 
-    public RenderWindowAWT(Scene scene) {
-        this.scene = scene;
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 
     public Scene getScene() {
@@ -19,6 +27,7 @@ public class RenderWindowAWT {
 
     public void setScene(Scene scene) {
         this.scene = scene;
+        gamePane.setScene(scene);
     }
 
     public void initWindow() {
@@ -26,8 +35,10 @@ public class RenderWindowAWT {
         frame.setTitle("Render Window AWT");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(200, 200, 1000, 600);
+        frame.setResizable(false);
         frame.setVisible(true);
         gamePane = new GamePane();
+        gamePane.setWindow(this);
         gamePane.setScene(scene);
         frame.add(gamePane);
 
@@ -35,7 +46,7 @@ public class RenderWindowAWT {
             while (true) {
                 update();
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(60);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -46,7 +57,9 @@ public class RenderWindowAWT {
     }
 
     public void update() {
-        gamePane.paintComponent(gamePane.getGraphics());
+        if (scene != null) {
+            gamePane.paintComponent(gamePane.getGraphics());
+        }
     }
 
 }

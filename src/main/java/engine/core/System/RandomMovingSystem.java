@@ -10,7 +10,7 @@ import java.util.Random;
 public class RandomMovingSystem implements ISystem {
 
     private List<GameObject> gameObjects;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public RandomMovingSystem(List<GameObject> gameObjects) {
         this.gameObjects = gameObjects;
@@ -19,7 +19,9 @@ public class RandomMovingSystem implements ISystem {
     @Override
     public void takeStep() {
         for (GameObject gameObject : gameObjects) {
-            gameObject.getComponent(Transform.class).setPosition(new Vector2D(getRandomInt(0, 500), getRandomInt(0, 500)));
+            Vector2D oldPosition = gameObject.getComponent(Transform.class).getPosition();
+            gameObject.getComponent(Transform.class)
+                    .setPosition(new Vector2D(oldPosition.getX() + getRandomInt(-10, 10), oldPosition.getY() + getRandomInt(-15, +15)));
         }
     }
 

@@ -1,25 +1,27 @@
 package engine.core.component;
 
+import engine.core.resource.Texture;
+
 public class Render extends Component {
 
-    private String texturePath;
+    private Texture texture;
 
     public Render(int id) {
         super(id);
     }
 
-    public String getTexturePath() {
-        return texturePath;
+    public Texture getTexture() {
+        return texture;
     }
 
-    public void setTexturePath(String texturePath) {
-        this.texturePath = texturePath;
+    public void setTexture(Texture texture) {
+        this.texture = texture;
     }
 
     @Override
     public String toString() {
         return "Render{" +
-                "texturePath='" + texturePath + '\'' +
+                "texture=" + texture +
                 '}';
     }
 }
